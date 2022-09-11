@@ -7,16 +7,44 @@ let unnecessaryWords = ["extremely", "literally", "actually"];
 
 let storyWords = story.split(" ");
 console.log(storyWords);
-console.log(storyWords.length);
+
+let wordCounter = storyWords.length;
+console.log(wordCounter);
 
 let betterWords = storyWords.filter(function (element) {
-  if (
-    element !== "extremely" ||
-    element !== "literally" ||
-    element !== "actually"
-  ) {
+  if (!unnecessaryWords.includes(element)) {
     return element;
   }
 });
 
 console.log(betterWords);
+
+const overUsedWordsCount = storyWords.reduce(function (acc, word) {
+  if (overusedWords.includes(word)) {
+    acc++;
+  }
+  return acc;
+}, 0);
+
+console.log(overUsedWordsCount);
+
+let sentenceCounter = 0;
+
+for (let i = 0; i < storyWords.length; i++) {
+  const element = storyWords[i];
+
+  if (
+    element[element.length - 1] === "." ||
+    element[element.length - 1] === "!"
+  ) {
+    sentenceCounter++;
+  }
+}
+
+console.log(sentenceCounter);
+
+console.log(`Word count: ${wordCounter}`);
+console.log(`Sentence count: ${sentenceCounter}`);
+console.log(`Over used word count: ${overUsedWordsCount}`);
+
+console.log(betterWords.join(" "));
